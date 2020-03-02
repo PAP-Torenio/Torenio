@@ -11,7 +11,7 @@ require '../SQL.php';
 if ($sqlcon->connect_error) {
     die(header("Location: ../Master/Login.html?erro=sql"));
 }
-if (!empty($_POST) AND (empty($_POST['utilizador']) or empty($_POST['password'])) {
+elseif (!empty($_POST) AND (empty($_POST['utilizador']) or empty($_POST['password'])) {
 header("Location: ../Master/Login.html?erro=empty");
 	exit;
 }

@@ -11,8 +11,6 @@ $sqlnome = "wmIgLSeIfbDLmvox";
 $sqlpass = "j3zKsoAwTWDfdDkf";
 $sqlhost = "localhost";
 $sqldaba = "torenio";
-$sqlcon = new mysqli($sqlhost, $sqlnome, $sqlpass, $sqldaba);;
-
-
+$sqlcon = new mysqli($sqlhost, $sqlnome, $sqlpass, $sqldaba);
 ?>
 </body>
