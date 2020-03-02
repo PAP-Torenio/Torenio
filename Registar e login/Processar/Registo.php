@@ -33,4 +33,4 @@ VALUES ($utilizador, $email, $data, $UKEY)";
 //echo ("$UKEY");
 
 ?>
-</body>
+</body>            
