@@ -11,12 +11,19 @@ if (!empty($_POST) AND (empty($_POST['utilizador']) or empty($_POST['email']) or
 header("Location: ../Utilizador/Registar.html?erro=empty");
 	exit;
 }
+
 $utilizador = $_POST['utilizador'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$data = 'datetime';
+$CRYPTOSALT = hash('sha1', $email.$data);
+$password = md5($_POST['password'].$CRYPTOSALT);
+$UKEY = hash('sha256', $CRYPTOSALT.$password.$utilizador);
 
-echo ("$utilizador");
-echo ("$email");
-echo ("$password");
+
+//echo ("$utilizador");
+//echo ("$email");
+//echo ("$password");
+echo ("$UKEY");
+
 ?>
 </body>
