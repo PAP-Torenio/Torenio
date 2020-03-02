@@ -30,4 +30,4 @@ $UKEY = hash('sha256', $CRYPTOSALT.$password.$utilizador);
 //echo ("$UKEY");
 
 ?>
-</body>
+</body>            
