@@ -55,9 +55,19 @@
 							Login
 						</button>
 					</div>
-
-
-
+<?php
+					if($sql) { ?><script>
+					    alert('<?php echo $total." Itens inseridos com sucesso !!!"; ?>');
+					    window.location.href='index.php';
+					    </script><? }
+					else {
+					    ?>
+<?php
+					    <script>
+					    alert('error Erro ao tentar inserir os itens tente nova mente');
+					    </script>
+					}
+          ?>
 
 	<div id="dropDownSelect1"></div>
 
