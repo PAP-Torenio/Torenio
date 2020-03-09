@@ -27,7 +27,7 @@ $UKEY = hash('sha256', $CRYPTOSALT.$password.$utilizador);
 $sql = "INSERT INTO Users (username, email, password, datacriacao, ukey)
 VALUES ('$utilizador', '$email', '$password', '$datahora', '$UKEY')";
 
-if ($sqlcon->query($sql) === TRUE) {
+if ($sqlcon->query($sql) == TRUE) {
     header("Location: ../Utilizador/success.html");
 } else {
     die(header("Location: ../Utilizador/Registar.html?erro=sql"));
