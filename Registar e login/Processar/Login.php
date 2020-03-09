@@ -26,7 +26,7 @@ $SKEY = hash('sha256', $CRYPTOSALT.$password.$utilizador);
 if ($SKEY == $SQL['UKEY']); {
   session_start();
   $_SESSION == $SKEY;
-  header("Location: ../Master/Success.html");
+  header("Location: /pagina inicial/index.php");
 }
 //else {
   //die(header("Location: ../Master/Login.html?erro=wrong"));

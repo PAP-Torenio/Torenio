@@ -27,6 +27,7 @@
 
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <?php session_start();?>
 
 
   <div id="overlayer"></div>
@@ -69,7 +70,14 @@
 		  <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-xl-block">
-			  <li class="cta"><a href="../Registar e login/Master/Login.php" class="nav-link"><span class="border bg-danger rounded text-white border-danger">Login</span></a></li>
+<?php
+  if(!empty($_SESSION)){
+    echo'<li class="cta"><a href="../Registar e login/Master/Logout.php" class="nav-link"><span class="border bg-danger rounded text-white border-danger">Logout</span></a></li>';
+  }
+  else{
+    echo'<li class="cta"><a href="../Registar e login/Master/Login.php" class="nav-link"><span class="border bg-danger rounded text-white border-danger">Login</span></a></li>';
+  }
+?>
 			  <li class="cta"><a href="../Registar e login/Utilizador/registar.html" class="nav-link"><span class="border bg-danger rounded text-white border-danger">Registar</span></a></li>
               </ul>
             </nav>
