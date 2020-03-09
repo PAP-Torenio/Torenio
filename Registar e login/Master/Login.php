@@ -28,11 +28,22 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
-	<div class="limiter">
+	<?php
+if(!empty($_GET["erro"])){
+	if($_GET["erro"] = 'sql'){
+	 echo"Erro de Base de Dados por favor contacte o Administrador";
+  }
+	if($_GET["erro"] = 'empty'){
+	 echo"Campo Vazio";
+  }
+	if($_GET["erro"] = 'wrong'){
+	 echo"Nome de utilizador ou alavra passe errada";
+ }}
+	?>
+  <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-85 p-b-20">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="../Processar/Login.php">
 					<span class="login100-form-title p-b-70">
 						Bem Vindo
 					</span>
@@ -55,22 +66,7 @@
 							Login
 						</button>
 					</div>
-<?php
-					if($sql) { ?><script>
-					    alert('<?php echo $total." Itens inseridos com sucesso !!!"; ?>');
-					    window.location.href='index.php';
-					    </script><? }
-					else {
-					    ?>
-<?php
-					    <script>
-					    alert('error Erro ao tentar inserir os itens tente nova mente');
-					    </script>
-					}
-          ?>
-
 	<div id="dropDownSelect1"></div>
-
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
