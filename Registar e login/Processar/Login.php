@@ -11,18 +11,33 @@ require '../SQL.php';
 if ($sqlcon->connect_error) {
     die(header("Location: ../Master/Login.html?erro=sql"));
 }
-elseif (!empty($_POST) AND (empty($_POST['utilizador']) or empty($_POST['password'])) {
+elseif (!empty($_POST) AND (empty($_POST['utilizador']) or empty($_POST['password']))) {
 header("Location: ../Master/Login.html?erro=empty");
 	exit;
 }
 $utilizador = $_POST['utilizador'];
-
-
-$email=SQL;
-$data=SQL;
+$SQLQuery = $sqlcon->query("Select * From Users");
+$SQL= $SQLQuery->fetch_array();
+$email=$SQL['email'];
+$data=$SQL['datacriacao'];
 $CRYPTOSALT = hash('sha256', $email.$data);
 $password = hash('sha256', $_POST['password'].$CRYPTOSALT);
 $SKEY = hash('sha256', $CRYPTOSALT.$password.$utilizador);
-$_SESSION == $SKEY
+if ($SKEY == $SQL['UKEY']); {
+  session_start();
+  $_SESSION == $SKEY;
+  header("Location: ../Master/Success.html");
+}
+//else {
+  //die(header("Location: ../Master/Login.html?erro=wrong"));
+//}
+
+//echo "$utilizador";
+//echo "$email";
+//echo "$data";
+//echo "$CRYPTOSALT";
+//echo "$password";
+//echo "$SKEY";
+//echo "$_SESSION";
 ?>
 </body>

@@ -18,14 +18,20 @@ header("Location: ../Utilizador/Registar.html?erro=empty");
 
 $utilizador = $_POST['utilizador'];
 $email = $_POST['email'];
-$data = 'datetime';
-$CRYPTOSALT = hash('sha256', $email.$data);
+date_default_timezone_set('Europe/Lisbon');
+$datahora=Date("Y-m-d H:i:s");
+$CRYPTOSALT = hash('sha256', $email.$datahora);
 $password = hash('sha256', $_POST['password'].$CRYPTOSALT);
 $UKEY = hash('sha256', $CRYPTOSALT.$password.$utilizador);
 
-$sql = "INSERT INTO Jogadores (username, email, password, datacriacao, ukey)
-VALUES ($utilizador, $email, $data, $UKEY)";
+$sql = "INSERT INTO Users (username, email, password, datacriacao, ukey)
+VALUES ('$utilizador', '$email', '$password', '$datahora', '$UKEY')";
 
+if ($sqlcon->query($sql) === TRUE) {
+    header("Location: ../Utilizador/success.html");
+} else {
+    die(header("Location: ../Utilizador/Registar.html?erro=sql"));
+}
 
 //echo ("$utilizador");
 //echo ("$email");
@@ -33,4 +39,4 @@ VALUES ($utilizador, $email, $data, $UKEY)";
 //echo ("$UKEY");
 
 ?>
-</body>            
+</body>
