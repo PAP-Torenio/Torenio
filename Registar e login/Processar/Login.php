@@ -16,21 +16,22 @@ header("Location: ../Master/Login.html?erro=empty");
 	exit;
 }
 $utilizador = $_POST['utilizador'];
-$SQLQuery = $sqlcon->query("Select * From Users");
-$SQL= $SQLQuery->fetch_array();
+$SQLQuery = $sqlcon->query("Select * From Users where username='".$utilizador."'");
+$SQL = $SQLQuery->fetch_array();
 $email=$SQL['email'];
 $data=$SQL['datacriacao'];
+$UKEY=$SQL['ukey'];
 $CRYPTOSALT = hash('sha256', $email.$data);
 $password = hash('sha256', $_POST['password'].$CRYPTOSALT);
 $SKEY = hash('sha256', $CRYPTOSALT.$password.$utilizador);
-if ($SKEY == $SQL['UKEY']); {
+if ($SKEY == $UKEY) {
   session_start();
-  $_SESSION == $SKEY;
+  $_SESSION["key"] = $SKEY;
   header("Location: /pagina inicial/index.php");
 }
-//else {
-  //die(header("Location: ../Master/Login.html?erro=wrong"));
-//}
+else {
+  die(header("Location: ../Master/Login.php?erro=wrong"));
+}
 
 //echo "$utilizador";
 //echo "$email";

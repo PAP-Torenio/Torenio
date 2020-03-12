@@ -5,6 +5,6 @@
     <title>Meu Redirect</title>
 </head>
 <body>
-  <?php header("Location: ./pagina inicial/index.html");?>
+  <?php header("Location: ./pagina inicial/index.php");?>
 </body>
 </html>

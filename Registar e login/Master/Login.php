@@ -30,14 +30,14 @@
 <body>
 	<?php
 if(!empty($_GET["erro"])){
-	if($_GET["erro"] = 'sql'){
+ 	if($_GET["erro"] == "sql"){
 	 echo"Erro de Base de Dados por favor contacte o Administrador";
   }
-	if($_GET["erro"] = 'empty'){
+	if($_GET["erro"] == "empty"){
 	 echo"Campo Vazio";
   }
-	if($_GET["erro"] = 'wrong'){
-	 echo"Nome de utilizador ou alavra passe errada";
+	if($_GET["erro"] == "wrong"){
+	 echo"Nome de utilizador ou palavra passe errada";
  }}
 	?>
   <div class="limiter">
