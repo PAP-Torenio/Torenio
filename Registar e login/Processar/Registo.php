@@ -28,7 +28,7 @@ $sql = "INSERT INTO Users (username, email, password, datacriacao, ukey)
 VALUES ('$utilizador', '$email', '$password', '$datahora', '$UKEY')";
 
 if ($sqlcon->query($sql) == TRUE) {
-    header("Location: ../Utilizador/success.html");
+    header("Location: ../sucesso/sucesso.html");
 } else {
     die(header("Location: ../Utilizador/Registar.html?erro=sql"));
 }
